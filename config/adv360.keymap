@@ -106,21 +106,21 @@
 
         layer_left_arrows {
             bindings = <
-&trans     &trans                 &trans    &trans    &trans     &trans  &trans                                        &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans     &trans                 &trans    &kp UP    &trans     &trans  &trans                                        &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&kp LSHFT  &mt LS(LALT) LEFT_ALT  &kp LEFT  &kp DOWN  &kp RIGHT  &trans  &trans    &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans     &trans                 &trans    &trans    &trans     &trans                    &trans      &trans                  &trans  &trans  &trans  &trans  &trans  &trans
-&trans     &trans                 &trans    &trans    &trans             &kp LGUI  &trans  &trans      &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans
+&trans                     &trans                 &trans    &trans    &trans     &trans  &trans                                              &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans                     &trans                 &trans    &kp UP    &trans     &trans  &trans                                              &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&mt LS(LEFT_GUI) LEFT_GUI  &mt LS(LALT) LEFT_ALT  &kp LEFT  &kp DOWN  &kp RIGHT  &trans  &trans    &trans        &trans      &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans                     &trans                 &trans    &trans    &trans     &trans                          &trans      &trans                  &trans  &trans  &trans  &trans  &trans  &trans
+&trans                     &trans                 &trans    &trans    &trans             &kp LGUI  &kp LEFT_ALT  &trans      &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans
             >;
         };
 
         layer_right_arrows {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans                                      &trans         &trans  &trans          &trans          &trans           &trans                       &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans                                      &trans         &trans  &trans          &kp UP_ARROW    &trans           &trans                       &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans         &trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &mt RS(RIGHT_ALT) RIGHT_ALT  &kp RIGHT_SHIFT
-&trans  &trans  &trans  &trans  &trans  &trans                  &trans      &trans                         &trans  &trans          &trans          &trans           &trans                       &trans
-&trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans      &trans  &none   &kp RIGHT_GUI          &trans          &trans          &trans           &trans                       &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans                                             &trans         &trans  &trans          &trans          &trans           &trans                       &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans                                             &trans         &trans  &trans          &kp UP_ARROW    &trans           &trans                       &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans         &trans         &trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &mt RS(RIGHT_ALT) RIGHT_ALT  &mt RS(RIGHT_GUI) RIGHT_GUI
+&trans  &trans  &trans  &trans  &trans  &trans                  &trans      &trans                                &trans  &trans          &trans          &trans           &trans                       &trans
+&trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans      &trans  &kp RIGHT_ALT  &kp RIGHT_GUI          &trans          &trans          &trans           &trans                       &trans
             >;
         };
     };
