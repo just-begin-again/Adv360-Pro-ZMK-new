@@ -1,10 +1,9 @@
-#include <behaviors.dtsi>
-#include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/rgb.h>
 #include <dt-bindings/zmk/stp.h>
+#include <behaviors.dtsi>
 #include <dt-bindings/zmk/backlight.h>
-#include <dt-bindings/zmk/pointing.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/rgb.h>
 
 / {
     behaviors {
@@ -117,11 +116,11 @@
 
         layer_right_arrows {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans                                             &trans  &trans  &trans          &trans          &trans           &trans                       &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans                                             &trans  &trans  &trans          &kp UP_ARROW    &trans           &trans                       &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans         &trans  &trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &mt RS(RIGHT_ALT) RIGHT_ALT  &kp RIGHT_SHIFT
+&trans  &trans  &trans  &trans  &trans  &trans  &trans                                      &trans         &trans  &trans          &trans          &trans           &trans                       &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans                                      &trans         &trans  &trans          &kp UP_ARROW    &trans           &trans                       &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans         &trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &mt RS(RIGHT_ALT) RIGHT_ALT  &kp RIGHT_SHIFT
 &trans  &trans  &trans  &trans  &trans  &trans                  &trans      &trans                         &trans  &trans          &trans          &trans           &trans                       &trans
-&trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans      &trans  &kp RIGHT_GUI  &trans          &trans          &trans          &trans           &trans                       &trans
+&trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans      &trans  &none   &kp RIGHT_GUI          &trans          &trans          &trans           &trans                       &trans
             >;
         };
     };
