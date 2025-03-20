@@ -3,6 +3,7 @@
 #include <dt-bindings/zmk/backlight.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/rgb.h>
 
 / {
@@ -47,7 +48,7 @@
         default_layer {
             bindings = <
 &kp EQUAL   &kp N1     &kp N2    &kp N3               &lt 4 N4        &kp N5  &tog 2                                                   &mo 4                         &kp N6  &kp N7           &kp N8           &kp N9    &kp N0    &kp MINUS
-&kp ESCAPE  &kp Q      &kp W     &kp E                &kp R           &kp T   &to 0                                                    &none                         &kp Y   &kp U            &kp I            &kp O     &kp P     &kp BSLH
+&kp ESCAPE  &kp Q      &kp W     &kp E                &kp R           &kp T   &to 0                                                    &to 8                         &kp Y   &kp U            &kp I            &kp O     &kp P     &kp BSLH
 &kp TAB     &kp A      &kp S     &hm LEFT_ALT D       &hm LEFT_GUI F  &kp G   &to 1     &mo 5    &kp LALT      &kp LGUI   &lt 5 RCTRL  &none                         &kp H   &hm RIGHT_GUI J  &hm RIGHT_ALT K  &kp L     &kp SEMI  &kp SQT
 &kp LSHFT   &kp Z      &kp X     &copy_and_clipboard  &paste_w_V      &kp B                      &kp HOME      &kp PG_UP                                             &kp N   &kp M            &kp COMMA        &kp DOT   &kp FSLH  &kp RSHFT
 &mo 3       &kp GRAVE  &kp CAPS  &kp LEFT             &kp RIGHT               &kp BSPC  &kp DEL  &mo 7         &mo 6      &kp ENTER    &mt LC(LA(LEFT_SHIFT)) SPACE          &kp UP           &kp DOWN         &kp LBKT  &kp RBKT  &mo 3
@@ -57,7 +58,7 @@
         layer_colemak_dh {
             bindings = <
 &trans          &trans  &trans  &trans               &trans          &trans  &tog 2                                                                 &trans                        &trans  &trans           &trans           &trans      &trans         &trans
-&kp ESCAPE      &kp Q   &kp W   &kp F                &kp P           &kp B   &to 0                                                                  &trans                        &kp J   &kp L            &kp U            &kp Y       &kp SEMICOLON  &trans
+&kp ESCAPE      &kp Q   &kp W   &kp F                &kp P           &kp B   &to 0                                                                  &to 8                         &kp J   &kp L            &kp U            &kp Y       &kp SEMICOLON  &trans
 &kp TAB         &kp A   &kp R   &hm LEFT_ALT S       &hm LEFT_GUI T  &kp G   &to 1          &mo 5       &kp LEFT_ALT      &kp RCMD     &lt 5 RCTRL  &trans                        &kp M   &hm RIGHT_GUI N  &hm RIGHT_ALT E  &kp I       &kp O          &trans
 &kp LEFT_SHIFT  &kp Z   &kp X   &copy_and_clipboard  &paste_w_D      &kp V                              &kp HOME          &kp PAGE_UP                                             &kp K   &kp H            &kp COMMA        &kp PERIOD  &kp SLASH      &kp RIGHT_SHIFT
 &mo 3           &trans  &trans  &trans               &trans                  &kp BACKSPACE  &kp DELETE  &mo 7             &mo 6        &kp ENTER    &mt LC(LA(LEFT_SHIFT)) SPACE          &trans           &trans           &trans      &trans         &mo 3
@@ -121,6 +122,16 @@
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans         &trans         &trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &mt RS(RIGHT_ALT) RIGHT_ALT  &mt RS(RIGHT_GUI) RIGHT_GUI
 &trans  &trans  &trans  &trans  &trans  &trans                  &trans      &trans                                &trans  &trans          &trans          &trans           &trans                       &trans
 &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans      &trans  &kp RIGHT_ALT  &kp RIGHT_GUI          &trans          &trans          &trans           &trans                       &trans
+            >;
+        };
+
+        layer_nav {
+            bindings = <
+&trans  &trans        &trans                    &trans                     &trans                 &trans  &trans                                         &trans     &trans  &trans          &trans          &trans           &trans  &trans
+&trans  &kp LG(LBKT)  &kp LG(LS(LEFT_BRACKET))  &kp LG(LS(RIGHT_BRACKET))  &kp LG(RIGHT_BRACKET)  &trans  &to 0                                          &trans     &trans  &msc SCRL_LEFT  &mmv MOVE_UP    &msc SCRL_RIGHT  &trans  &trans
+&trans  &kp LEFT      &kp DOWN                  &kp UP                     &kp RIGHT              &trans  &to 1   &trans  &trans      &trans  &trans     &trans     &trans  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans  &trans
+&trans  &trans        &trans                    &trans                     &trans                 &trans                  &trans      &trans                        &trans  &msc SCRL_UP    &trans          &msc SCRL_DOWN   &trans  &trans
+&trans  &trans        &trans                    &kp LEFT                   &kp RIGHT                      &trans  &trans  &trans      &trans  &mkp LCLK  &mkp RCLK          &kp UP          &kp DOWN        &trans           &trans  &trans
             >;
         };
     };
