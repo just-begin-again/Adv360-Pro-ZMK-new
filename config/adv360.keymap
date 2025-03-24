@@ -120,11 +120,11 @@
 
         layer_symbols {
             bindings = <
-&trans  &trans                &trans            &trans             &trans                 &trans  &tog 2                                      &trans  &trans  &trans                          &trans                &trans              &trans               &trans
-&trans  &trans                &trans            &trans             &trans                 &trans  &to 0                                       &trans  &trans  &mt ASTRK SLASH                 &kp PLUS              &mt PIPE AMPERSAND  &trans               &trans
-&trans  &kp LEFT_BRACE        &kp LT            &kp GREATER_THAN   &kp RIGHT_BRACE        &trans  &to 1   &trans  &trans      &trans  &trans  &trans  &trans  &mt SINGLE_QUOTE DOUBLE_QUOTES  &mt COMMA DOT         &kp EQUAL           &mt SEMICOLON COLON  &trans
-&trans  &kp LEFT_PARENTHESIS  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp RIGHT_PARENTHESIS  &trans                  &trans      &trans                  &trans  &mt QUESTION EXCL               &mt UNDERSCORE MINUS  &kp AT              &trans               &trans
-&trans  &trans                &trans            &trans             &trans                         &trans  &trans  &trans      &trans  &trans  &trans          &trans                          &trans                &trans              &trans               &trans
+&trans   &trans                &trans            &trans             &trans                 &trans  &tog 2                                      &trans  &trans  &trans                          &trans                &trans              &trans               &trans
+&trans   &trans                &trans            &trans             &trans                 &trans  &to 0                                       &trans  &trans  &mt ASTRK SLASH                 &kp PLUS              &mt PIPE AMPERSAND  &trans               &trans
+&kp ESC  &kp LEFT_BRACE        &kp LT            &kp GREATER_THAN   &kp RIGHT_BRACE        &trans  &to 1   &trans  &trans      &trans  &trans  &trans  &trans  &mt SINGLE_QUOTE DOUBLE_QUOTES  &mt COMMA DOT         &kp EQUAL           &mt SEMICOLON COLON  &trans
+&trans   &kp LEFT_PARENTHESIS  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp RIGHT_PARENTHESIS  &trans                  &trans      &trans                  &trans  &mt QUESTION EXCL               &mt UNDERSCORE MINUS  &kp AT              &trans               &trans
+&trans   &trans                &trans            &trans             &trans                         &trans  &trans  &trans      &trans  &trans  &trans          &trans                          &trans                &trans              &trans               &trans
             >;
         };
 
