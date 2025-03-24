@@ -80,11 +80,11 @@
 
         layer_colemak_dh {
             bindings = <
-&trans          &trans  &trans  &trans               &trans          &trans  &tog 2                                                                    &trans                        &trans  &trans           &trans           &trans      &trans         &trans
-&kp ESCAPE      &kp Q   &kp W   &kp F                &kp P           &kp B   &none                                                                     &none                         &kp J   &kp L            &kp U            &kp Y       &kp SEMICOLON  &trans
-&kp TAB         &kp A   &kp R   &hm LEFT_ALT S       &hm LEFT_GUI T  &kp G   &to 0          &mo 5       &kp LEFT_ALT              &kp RCMD  &mo 5      &tog 8                        &kp M   &hm RIGHT_GUI N  &hm RIGHT_ALT E  &kp I       &kp O          &trans
-&kp LEFT_SHIFT  &kp Z   &kp X   &copy_and_clipboard  &paste_w_D      &kp V                              &screenshots_and_ocr      &kp CAPS                                           &kp K   &kp H            &kp COMMA        &kp PERIOD  &kp SLASH      &kp RIGHT_SHIFT
-&mo 3           &trans  &trans  &kp LEFT             &kp RIGHT               &kp BACKSPACE  &kp DELETE  &mo 7                     &mo 6     &kp ENTER  &mt LC(LA(LEFT_SHIFT)) SPACE          &kp UP           &kp DOWN         &trans      &trans         &mo 3
+&trans          &trans  &trans       &trans               &trans          &trans  &tog 2                                                                    &trans                        &trans  &trans           &trans           &trans       &trans         &trans
+&kp ESCAPE      &kp Q   &kp W        &kp F                &kp P           &kp B   &none                                                                     &none                         &kp J   &kp L            &kp U            &kp Y        &kp SEMICOLON  &trans
+&kp TAB         &kp A   &hm LCTRL R  &hm LEFT_ALT S       &hm LEFT_GUI T  &kp G   &to 0          &mo 5       &kp LEFT_ALT              &kp RCMD  &mo 5      &tog 8                        &kp M   &hm RIGHT_GUI N  &hm RIGHT_ALT E  &hm RCTRL I  &kp O          &trans
+&kp LEFT_SHIFT  &kp Z   &kp X        &copy_and_clipboard  &paste_w_D      &kp V                              &screenshots_and_ocr      &kp CAPS                                           &kp K   &kp H            &kp COMMA        &kp PERIOD   &kp SLASH      &kp RIGHT_SHIFT
+&mo 3           &trans  &trans       &kp LEFT             &kp RIGHT               &kp BACKSPACE  &kp DELETE  &mo 7                     &mo 6     &kp ENTER  &mt LC(LA(LEFT_SHIFT)) SPACE          &kp UP           &kp DOWN         &trans       &trans         &mo 3
             >;
         };
 
