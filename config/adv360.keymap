@@ -57,16 +57,20 @@
         switch_to_colemak_dh: switch_to_colemak_dh {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp F20>, <&to 1>;
+            bindings = <&kp F20>, <&macro_wait_time 30>, <&to 1>;
+
             delays = <0>, <30>;
+
             label = "SWITCH_TO_COLEMAK_DH";
         };
 
         switch_to_qwerty: switch_to_qwerty {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp F21>, <&to 0>;
+            bindings = <&kp F21>, <&macro_pause_for_release>, <&to 0>;
+
             delays = <0>, <30>;
+
             label = "SWITCH_TO_QWERTY";
         };
     };
@@ -90,7 +94,7 @@
 &kp ESCAPE         &kp Q   &kp W        &kp F                &kp P           &kp B   &none                                                                                        &none                         &kp J   &kp L            &kp U            &kp Y        &kp SEMICOLON  &trans
 &kp TAB            &kp A   &hm LCTRL R  &hm LEFT_ALT S       &hm LEFT_GUI T  &kp G   &trans         &mo 5                          &kp LEFT_ALT              &kp RCMD  &mo 5      &tog 2                        &kp M   &hm RIGHT_GUI N  &hm RIGHT_ALT E  &hm RCTRL I  &kp O          &trans
 &kp LEFT_SHIFT     &kp Z   &kp X        &copy_and_clipboard  &paste_w_D      &kp V                                                 &screenshots_and_ocr      &kp CAPS                                           &kp K   &kp H            &kp COMMA        &kp PERIOD   &kp SLASH      &kp RIGHT_SHIFT
-&switch_to_qwerty  &trans  &trans       &kp LEFT             &kp RIGHT               &kp BACKSPACE  &mt LC(LA(LEFT_SHIFT)) DELETE  &mo 7                     &mo 6     &kp ENTER  &mt LC(LA(LEFT_SHIFT)) SPACE          &kp UP           &kp DOWN         &trans       &trans         &tog 8
+&switch_to_qwerty  &trans  &trans       &kp LEFT             &kp RIGHT               &kp BACKSPACE  &mt LC(LA(LEFT_SHIFT)) DELETE  &mo 7                     &mo 6     &kp ENTER  &mt LC(LA(LEFT_SHIFT)) SPACE          &kp UP           &kp DOWN         &kp F20      &kp F21        &tog 8
             >;
         };
 
