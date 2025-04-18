@@ -57,7 +57,7 @@
         switch_to_colemak_dh: switch_to_colemak_dh {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp F20>, <&macro_press>, <&to 1>;
+            bindings = <&kp CAPSLOCK>, <&macro_press>, <&to 1>;
 
             label = "SWITCH_TO_COLEMAK_DH";
         };
@@ -65,7 +65,7 @@
         switch_to_qwerty: switch_to_qwerty {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp F21>, <&macro_wait_time 75>, <&to 0>;
+            bindings = <&kp CAPSLOCK>, <&macro_wait_time 75>, <&to 0>;
 
             label = "SWITCH_TO_QWERTY";
         };
@@ -160,7 +160,7 @@
 &trans  &kp LG(LBKT)       &kp LG(LS(LEFT_BRACKET))  &kp LG(LS(RIGHT_BRACKET))  &kp LG(RIGHT_BRACKET)  &trans  &to 0                                                                     &trans     &trans  &msc SCRL_LEFT  &mmv MOVE_UP    &msc SCRL_RIGHT  &trans           &trans
 &trans  &mt LG(LEFT) LEFT  &hm LEFT_ALT DOWN         &hm LEFT_GUI UP            &mt LG(RIGHT) RIGHT    &trans  &to 1          &kp LEFT_GUI  &kp LEFT_ALT              &trans  &trans     &trans     &trans  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &mt LG(TAB) TAB  &trans
 &trans  &trans             &trans                    &trans                     &trans                 &trans                               &screenshots_and_ocr      &trans                        &trans  &msc SCRL_UP    &trans          &msc SCRL_DOWN   &trans           &trans
-&trans  &kp F20            &trans                    &kp LEFT                   &kp RIGHT                      &kp BACKSPACE  &kp DELETE    &trans                    &trans  &mkp RCLK  &mkp LCLK          &kp UP          &kp DOWN        &trans           &trans           &trans
+&trans  &trans             &trans                    &kp LEFT                   &kp RIGHT                      &kp BACKSPACE  &kp DELETE    &trans                    &trans  &mkp RCLK  &mkp LCLK          &kp UP          &kp DOWN        &trans           &trans           &trans
             >;
         };
     };
