@@ -57,14 +57,16 @@
         switch_to_colemak_dh: switch_to_colemak_dh {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp F20 &to 1>;
+            bindings = <&kp F20>, <&to 1>;
+            delays = <0>, <30>;
             label = "SWITCH_TO_COLEMAK_DH";
         };
 
         switch_to_qwerty: switch_to_qwerty {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp F21 &to 0>;
+            bindings = <&kp F21>, <&to 0>;
+            delays = <0>, <30>;
             label = "SWITCH_TO_QWERTY";
         };
     };
