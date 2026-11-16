@@ -169,6 +169,9 @@ pre-update hardware snapshots. The raw `hardware-before-20261116-*.uf2`
 files also contain other regions. Use the listed recovery pair to roll back
 and keep the raw snapshots as recovery sources.
 
+Use the [macOS flash helper](flash-macos.md) to install a pair over USB with
+the Kinesis bootloader shortcuts.
+
 ### Symbols over Bluetooth
 
 If symbols work by USB but fail over Bluetooth after updating, connect the
