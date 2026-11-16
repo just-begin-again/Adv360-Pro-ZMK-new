@@ -57,10 +57,7 @@ class KeymapContractTests(unittest.TestCase):
         for name in expected:
             self.assertEqual(len(layer_bindings(self.content, name)), 76, name)
 
-    def test_extended_hid_and_generated_symbol_tokens(self) -> None:
-        self.assertIn(
-            '#include "generated/symbol_tokens.dtsi"', self.content
-        )
+    def test_extended_hid_preserves_the_meh_marker(self) -> None:
         self.assertIn(
             "CONFIG_ZMK_HID_KEYBOARD_EXTENDED_REPORT=y",
             LEFT_DEFCONFIG.read_text(),
@@ -78,34 +75,40 @@ class KeymapContractTests(unittest.TestCase):
     def test_symbol_positions_preserve_legacy_taps_and_holds(self) -> None:
         for base in ("default_layer", "layer_colemak_dh"):
             bindings = layer_bindings(self.content, base)
-            self.assertEqual(bindings[35], "symbol_left")
-            self.assertEqual(bindings[38], "symbol_right")
+            self.assertEqual(bindings[35], "mo 5")
+            self.assertEqual(bindings[38], "mo 5")
 
         symbols = layer_bindings(self.content, "layer_symbols")
-        expected = {
-            23: "mt SYM_ASTERISK SYM_SLASH",
-            24: "kp SYM_PLUS",
-            25: "mt SYM_PIPE SYM_AMPERSAND",
-            26: "kp SYM_HASH",
-            29: "kp SYM_LEFT_BRACE",
-            30: "kp SYM_LESS_THAN",
-            31: "kp SYM_GREATER_THAN",
-            32: "kp SYM_RIGHT_BRACE",
-            40: "kp SYM_GRAVE",
-            41: "mt SYM_SINGLE_QUOTE SYM_DOUBLE_QUOTE",
-            42: "mt SYM_COMMA SYM_PERIOD",
-            43: "kp SYM_EQUAL",
-            44: "mt SYM_SEMICOLON SYM_COLON",
-            47: "kp SYM_LEFT_PARENTHESIS",
-            48: "kp SYM_LEFT_BRACKET",
-            49: "kp SYM_RIGHT_BRACKET",
-            50: "kp SYM_RIGHT_PARENTHESIS",
-            55: "mt SYM_QUESTION SYM_EXCLAMATION",
-            56: "mt SYM_UNDERSCORE SYM_MINUS",
-            57: "kp SYM_AT",
+        # Nontransparent positions from the firmware captured before the update.
+        original = {
+            6: "tog 2",
+            15: "kp ESCAPE",
+            20: "to 0",
+            23: "mt ASTRK SLASH",
+            24: "kp PLUS",
+            25: "mt PIPE AMPERSAND",
+            26: "kp HASH",
+            28: "kp ESC",
+            29: "kp LEFT_BRACE",
+            30: "kp LT",
+            31: "kp GREATER_THAN",
+            32: "kp RIGHT_BRACE",
+            34: "to 1",
+            40: "kp GRAVE",
+            41: "mt SINGLE_QUOTE DOUBLE_QUOTES",
+            42: "mt COMMA DOT",
+            43: "kp EQUAL",
+            44: "mt SEMICOLON COLON",
+            47: "kp LEFT_PARENTHESIS",
+            48: "kp LEFT_BRACKET",
+            49: "kp RIGHT_BRACKET",
+            50: "kp RIGHT_PARENTHESIS",
+            55: "mt QUESTION EXCL",
+            56: "mt UNDERSCORE MINUS",
+            57: "kp AT",
+            70: "kp ESCAPE",
         }
-        for position, binding in expected.items():
-            self.assertEqual(symbols[position], binding, position)
+        self.assertEqual(symbols, [original.get(i, "trans") for i in range(76)])
 
     def test_original_home_row_mods_tap_dances_and_caps_toggle(self) -> None:
         behavior = self.content.split("hm: homerow_mods {", 1)[1].split("};", 1)[0]

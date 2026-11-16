@@ -64,10 +64,11 @@ right-hand cluster, physical J/K/I/L perform left/down/up/right in both bases.
 
 All 76 positions agree between the symbol layers in `attemtp9000`
 (`a28bf646`), `attempt9001` (`b0d06348`), and the pre-update hardware image.
-The 20 symbol positions below use the original ABC output in both ABC and
-Russian–PC. Match either key label to find the same physical position.
+The firmware restores those exact bindings, including the hold action for
+each symbol pair and both original momentary thumb keys. Match either key
+label to find the same physical position.
 
-| Physical QWERTY keys | Colemak-DH labels | Tap in order | Hold differences (Colemak-DH) |
+| Physical QWERTY keys | Colemak-DH labels | ABC tap in order | ABC hold differences (Colemak-DH) |
 | --- | --- | --- | --- |
 | A, S, D, F | A, R, S, T | `{` `<` `>` `}` | |
 | Z, X, C, V | Z, X, C, D | `(` `[` `]` `)` | |
@@ -76,17 +77,16 @@ Russian–PC. Match either key label to find the same physical position.
 | M, comma, period | H, comma, period | `!` `-` `@` | H → `?`, comma → `_` |
 
 The layer also keeps six control bindings and 50 positions that pass through
-to the active lower layer. In the old Russian–PC setup, raw punctuation
-usages sometimes printed Cyrillic letters, for example `Х` instead of
-`{`. The table shows the original ABC signs shared by both layouts now.
+to the active lower layer. These are standard key presses again. The output
+depends on the selected macOS input source, just as it did on `attempt9001`.
+For example, Russian–PC can print `Х` where ABC prints `{`.
 
-Each symbol thumb sends an F22 or F23 marker while held. The Karabiner
-decoder accepts symbol tokens only during that hold, so regular keypad
-digits and operators remain available on the stock macOS input sources.
-For a key with tap and hold outputs, release the character key before
-releasing the thumb. ZMK may emit the tap at the character key's release.
-Extended HID reports must stay enabled. The optional custom input-source
-pair decodes tokens directly and is not needed for the stock pair.
+Karabiner's F22/F23 symbol decoder is retained for the earlier
+`adv360-restored-*.uf2` build. That build uses host decoding for the same
+output across languages but can lose signs when a token is not recognized
+or is sent after the symbol thumb is released. The restored native layer
+does not use those codes. The extended report remains enabled for the F24
+AeroSpace shortcut marker.
 
 ## Mouse and navigation
 
@@ -176,8 +176,8 @@ produced files with different hashes from the June build.
 
 | Purpose | File | SHA-256 |
 | --- | --- | --- |
-| Current left | `firmware/adv360-restored-left.uf2` | `8000b81c09db87e73ee0e554370994c7b72e928ee608c354422c0a93fe1f2378` |
-| Current right | `firmware/adv360-restored-right.uf2` | `80cb1683c2bf9cb0120651dabe835762d25ab68b1711ce7d2e8d71b6c72ddcfe` |
+| Current left | `firmware/adv360-legacy-symbols-left.uf2` | `5fa60cff556b2a396c7d9b151fcdc78265af1d72177266e49f8489cfa92bb362` |
+| Current right | `firmware/adv360-legacy-symbols-right.uf2` | `2ff2b9830402758d70b5e536f27327ccddd64da630502e2aa9833038af65a048` |
 | Recovery left | `firmware/hardware-recovery-left.uf2` | `420277bcef59f05611e3db31699ef857994ee78d823632eaafdb87dfbfe78e06` |
 | Recovery right | `firmware/hardware-recovery-right.uf2` | `b8f91658abf0abb5cdb0ea5deed355f9dc3d5629d81723adc968c6fe19cadf95` |
 
@@ -186,18 +186,23 @@ pre-update hardware snapshots. The raw `hardware-before-20261116-*.uf2`
 files also contain other regions. Use the listed recovery pair to roll back
 and keep the raw snapshots as recovery sources.
 
+For an update from the already installed `adv360-restored` pair, the old
+right half can stay installed. The right application differs only in the
+order of six behavior-table pointers, which ZMK looks up by name. The
+layout runs on the left half.
+
 Use the [macOS flash helper](flash-macos.md) to install a pair over USB with
 the Kinesis bootloader shortcuts.
 
-### Symbols over Bluetooth
+### HID descriptor over Bluetooth
 
-If symbols work by USB but fail over Bluetooth after updating, connect the
-left module by USB so it is available during troubleshooting. In macOS,
+If extended shortcuts work by USB and fail over Bluetooth after updating,
+connect the left module by USB so it is available during troubleshooting. In macOS,
 open **System Settings → Bluetooth → Adv360 Pro → Details → Disconnect**.
 Wait for the keyboard to reconnect or select **Connect**. This fixed the
 cached HID descriptor on the tested Mac and raised its observed usage
-limit from 103 (`0x67`) to 151 (`0x97`). The newer descriptor covers F22
-and F23, which the symbol layer uses while a thumb is held.
+limit from 103 (`0x67`) to 151 (`0x97`). The newer descriptor covers F24
+for the QWERTY Meh shortcut and F22/F23 for the previous symbol build.
 
 If Bluetooth still lacks the extended descriptor, clear the active
 keyboard pairing with **Mod + Right Windows**, forget Adv360 Pro in
@@ -206,9 +211,9 @@ step. [Kinesis Bluetooth troubleshooting](https://kinesis-ergo.com/support/kb360
 
 ## Hardware acceptance
 
-1. Confirm F22/F23, the QWERTY Meh marker F24, and every used symbol token over
-   both USB and Bluetooth.
-2. Check the original symbol tap/hold pairs in stock ABC and RussianWin.
+1. Confirm the QWERTY Meh marker F24 over both USB and Bluetooth.
+2. Check the original symbol tap/hold pairs in stock ABC. In Russian–PC
+   compare the output with the legacy Russian layout.
 3. Check `cc`, `xx`, `vv`/`dd`, fast rolls, and single/chorded home-row mods.
 4. Check the arrow layers, normal pointer speed, precision, acceleration,
    direct and four-way scrolling, and drag.

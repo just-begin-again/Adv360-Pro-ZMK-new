@@ -9,8 +9,8 @@
 Возьмите пару UF2 из одного артефакта GitHub Actions или одной локальной сборки. Для текущей сборки из этой ветки команды выглядят так.
 
 ```sh
-python3 bin/flash_adv360.py --dry-run firmware/adv360-restored-left.uf2 firmware/adv360-restored-right.uf2
-python3 bin/flash_adv360.py firmware/adv360-restored-left.uf2 firmware/adv360-restored-right.uf2
+python3 bin/flash_adv360.py --dry-run firmware/adv360-legacy-symbols-left.uf2 firmware/adv360-legacy-symbols-right.uf2
+python3 bin/flash_adv360.py firmware/adv360-legacy-symbols-left.uf2 firmware/adv360-legacy-symbols-right.uf2
 ```
 
 1. На экране появится приглашение `[left]`. Удерживайте Mod и нажмите Hotkey 1. Помощник найдёт загрузочный диск, проверит его и запишет левый UF2.
