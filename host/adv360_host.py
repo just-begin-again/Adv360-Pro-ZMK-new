@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+from __future__ import annotations
+
 import argparse
 import copy
 import datetime
@@ -15,10 +17,13 @@ from typing import Iterable
 
 
 MANAGED_PREFIX = "[Adv360 Managed]"
-LANGUAGE_RULES = {
+EARLY_MANAGED_RULES = {
     f"{MANAGED_PREFIX} Toggle input source (F19)",
     f"{MANAGED_PREFIX} Recover EN input source (F20)",
     f"{MANAGED_PREFIX} Recover RU input source (F21)",
+    f"{MANAGED_PREFIX} Track held symbol thumbs",
+    f"{MANAGED_PREFIX} Decode symbols in ABC",
+    f"{MANAGED_PREFIX} Decode symbols in RussianWin",
 }
 
 QWERTY_TO_COLEMAK = {
@@ -55,6 +60,7 @@ QWERTY_TO_COLEMAK = {
 }
 
 MEH_QWERTY_VARIABLE = "adv360_meh_qwerty"
+ADV360_BLUETOOTH = (7504, 24926)
 
 MODIFIER_NAMES = {"cmd", "ctrl", "alt", "shift"}
 MEH = frozenset({"ctrl", "alt", "shift"})
@@ -202,15 +208,60 @@ def generate_aerospace_fragment(config: str, manifest: dict) -> dict:
     }
 
 
-def merge_karabiner_config(config: dict, fragments: list[dict]) -> dict:
-    result = copy.deepcopy(config)
-    profiles = result.get("profiles", [])
-    profile = next(
+def selected_karabiner_profile(config: dict) -> dict | None:
+    profiles = config.get("profiles", [])
+    return next(
         (item for item in profiles if item.get("selected")),
         profiles[0] if profiles else None,
     )
+
+
+def find_karabiner_device(profile: dict, transport: dict, *, pointing: bool) -> dict | None:
+    for entry in profile.get("devices", []):
+        identifiers = entry.get("identifiers", {})
+        if (
+            identifiers.get("vendor_id") == transport["vendor_id"]
+            and identifiers.get("product_id") == transport["product_id"]
+            and identifiers.get("is_keyboard") is True
+            and identifiers.get("is_pointing_device", False) is pointing
+            and not any(
+                identifiers.get(flag)
+                for flag in ("is_consumer", "is_game_pad", "is_virtual_device", "device_address")
+            )
+        ):
+            return entry
+    return None
+
+
+def enable_adv360_composite_devices(profile: dict, manifest: dict) -> None:
+    for transport in manifest["devices"]:
+        entry = find_karabiner_device(profile, transport, pointing=True)
+        if entry is None:
+            vendor, product = transport["vendor_id"], transport["product_id"]
+            entry = {"identifiers": {
+                "vendor_id": vendor,
+                "product_id": product,
+                "is_keyboard": True,
+                "is_pointing_device": True,
+            }}
+            if (vendor, product) == ADV360_BLUETOOTH:
+                legacy = find_karabiner_device(profile, transport, pointing=False)
+                if legacy is not None and "simple_modifications" in legacy:
+                    entry["simple_modifications"] = copy.deepcopy(legacy["simple_modifications"])
+            profile.setdefault("devices", []).append(entry)
+        # Karabiner can otherwise ignore all events from the composite device.
+        entry["ignore"] = False
+
+
+def merge_karabiner_config(
+    config: dict, fragments: list[dict], *, manifest: dict | None = None
+) -> dict:
+    result = copy.deepcopy(config)
+    profile = selected_karabiner_profile(result)
     if profile is None:
         raise ValueError("Karabiner config has no profiles")
+    if manifest is not None:
+        enable_adv360_composite_devices(profile, manifest)
 
     complex_modifications = profile.setdefault("complex_modifications", {})
     rules = complex_modifications.setdefault("rules", [])
@@ -224,13 +275,13 @@ def merge_karabiner_config(config: dict, fragments: list[dict]) -> dict:
         for fragment in fragments
         for rule in fragment.get("rules", [])
     ]
-    # Karabiner stops at the first matching manipulator. Older global F20/F21
-    # rules must stay available to other keyboards but yield to the Adv360.
-    language = [rule for rule in managed if rule["description"] in LANGUAGE_RULES]
+    # Karabiner stops at the first match. Dedicated Adv360 language and symbol
+    # tokens must be decoded before personal rules that reuse the same usages.
+    early_managed = [rule for rule in managed if rule["description"] in EARLY_MANAGED_RULES]
     other_managed = [
-        rule for rule in managed if rule["description"] not in LANGUAGE_RULES
+        rule for rule in managed if rule["description"] not in EARLY_MANAGED_RULES
     ]
-    complex_modifications["rules"] = language + unmanaged + other_managed
+    complex_modifications["rules"] = early_managed + unmanaged + other_managed
     return result
 
 
@@ -384,7 +435,7 @@ def install(
         aerospace = paths.aerospace_config.read_text() if paths.aerospace_config.is_file() else ""
         config = load_json(paths.karabiner_config)
         merged = merge_karabiner_config(
-            config, load_fragments(paths, aerospace)
+            config, load_fragments(paths, aerospace), manifest=manifest
         )
         atomic_write_text(
             paths.karabiner_config,
@@ -458,7 +509,8 @@ def verify(
     require_installed: bool = True,
 ) -> list[str]:
     problems = []
-    status = device_gate(load_manifest(paths)["devices"], connected_devices)
+    manifest = load_manifest(paths)
+    status = device_gate(manifest["devices"], connected_devices)
     problems.extend(
         f"device not verified: {name}"
         for name, present in status.items()
@@ -471,11 +523,11 @@ def verify(
         problems.append("Karabiner config is missing")
     else:
         config = load_json(paths.karabiner_config)
-        profiles = config.get("profiles", [])
-        profile = next(
-            (item for item in profiles if item.get("selected")),
-            profiles[0] if profiles else {},
-        )
+        profile = selected_karabiner_profile(config) or {}
+        for transport in manifest["devices"]:
+            device = find_karabiner_device(profile, transport, pointing=True)
+            if device is None or device.get("ignore") is not False:
+                problems.append(f"Karabiner is not modifying events for {transport['description']}")
         rules = profile.get("complex_modifications", {}).get("rules", [])
         if not any(
             rule.get("description", "").startswith(MANAGED_PREFIX)
@@ -514,7 +566,7 @@ def verify(
 
         try:
             problems.extend(
-                verify_fallback_symbol_tokens(load_manifest(paths), translate)
+                verify_fallback_symbol_tokens(manifest, translate)
             )
         except subprocess.CalledProcessError as error:
             detail = (error.stderr or "").strip()

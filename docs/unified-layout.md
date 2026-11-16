@@ -62,21 +62,29 @@ right-hand cluster, physical J/K/I/L perform left/down/up/right in both bases.
 
 ## Common symbols
 
-The following positions come from the pre-update hardware image. Both
-ABC and Russian–PC use the same positions and tap/hold pairs. Letters in the
-table identify physical QWERTY key positions.
+All 76 positions agree between the symbol layers in `attemtp9000`
+(`a28bf646`), `attempt9001` (`b0d06348`), and the pre-update hardware image.
+The 20 symbol positions below use the original ABC output in both ABC and
+Russian–PC. Match either key label to find the same physical position.
 
-| Physical keys | Tap in order | Hold differences |
-| --- | --- | --- |
-| A, S, D, F | `{` `<` `>` `}` | |
-| Z, X, C, V | `(` `[` `]` `)` | |
-| U, I, O, P | `/` `+` `&` `#` | U → `*`, O → `\|` |
-| H, J, K, L, ; | grave accent, `"`, `.`, `=`, `:` | J → `'`, K → `,`, ; → `;` |
-| M, comma, period | `!` `-` `@` | M → `?`, comma → `_` |
+| Physical QWERTY keys | Colemak-DH labels | Tap in order | Hold differences (Colemak-DH) |
+| --- | --- | --- | --- |
+| A, S, D, F | A, R, S, T | `{` `<` `>` `}` | |
+| Z, X, C, V | Z, X, C, D | `(` `[` `]` `)` | |
+| U, I, O, P | L, U, Y, ; | `/` `+` `&` `#` | L → `*`, Y → `\|` |
+| H, J, K, L, ; | M, N, E, I, O | grave accent, `"`, `.`, `=`, `:` | N → `'`, E → `,`, O → `;` |
+| M, comma, period | H, comma, period | `!` `-` `@` | H → `?`, comma → `_` |
+
+The layer also keeps six control bindings and 50 positions that pass through
+to the active lower layer. In the old Russian–PC setup, raw punctuation
+usages sometimes printed Cyrillic letters, for example `Х` instead of
+`{`. The table shows the original ABC signs shared by both layouts now.
 
 Each symbol thumb sends an F22 or F23 marker while held. The Karabiner
 decoder accepts symbol tokens only during that hold, so regular keypad
 digits and operators remain available on the stock macOS input sources.
+For a key with tap and hold outputs, release the character key before
+releasing the thumb. ZMK may emit the tap at the character key's release.
 Extended HID reports must stay enabled. The optional custom input-source
 pair decodes tokens directly and is not needed for the stock pair.
 
@@ -105,8 +113,17 @@ distance.
 ## Host integration
 
 The installer creates a timestamped backup and replaces Karabiner rules whose
-description starts with `[Adv360 Managed]`. It preserves personal
-`simple_modifications`. If `~/.aerospace.toml` exists, the installer reads
+description starts with `[Adv360 Managed]`. It preserves personal rules and
+existing `simple_modifications`. The device-scoped language and symbol
+decoders run first when their conditions match. In the selected profile, it enables
+**Modify events** for both USB and Bluetooth Adv360 entries that report a
+keyboard and mouse together. Karabiner can ignore these devices by default.
+When it creates the composite Bluetooth entry, it copies any simple
+modifications from the older keyboard-only Bluetooth entry. Existing composite
+entries keep their own modifications. **Devices** in Karabiner-Elements
+Settings shows both entries when connected. [Karabiner device settings](https://karabiner-elements.pqrs.org/docs/manual/configuration/configure-devices/)
+
+If `~/.aerospace.toml` exists, the installer reads
 it to generate the keyboard's position remaps. The AeroSpace config is
 used read-only.
 

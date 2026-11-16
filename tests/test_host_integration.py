@@ -194,6 +194,38 @@ ctrl-alt-shift-i = ['join-with right', 'mode main']
         )
         self.assertEqual(merge_karabiner_config(merged, [fragment]), merged)
 
+    def test_symbol_minus_decoder_precedes_personal_iso_key_rule(self) -> None:
+        personal = [
+            {"description": "First personal rule", "manipulators": []},
+            {"description": "ISO key acts as a modifier", "manipulators": [{
+                "type": "basic",
+                "from": {"key_code": "non_us_backslash", "modifiers": {"optional": ["any"]}},
+                "to": [{"key_code": "left_shift"}],
+            }]},
+        ]
+        original = {"profiles": [{"complex_modifications": {"rules": personal}}]}
+        symbols = json.loads((ROOT / "host/karabiner/adv360-symbols.json").read_text())
+        other = {"description": f"{MANAGED_PREFIX} Other rule", "manipulators": []}
+
+        merged = merge_karabiner_config(original, [symbols, {"rules": [other]}])
+
+        rules = merged["profiles"][0]["complex_modifications"]["rules"]
+        expected = [*symbols["rules"], *personal, other]
+        self.assertEqual([rule["description"] for rule in rules],
+                         [rule["description"] for rule in expected])
+        self.assertEqual(rules, expected)
+        for decoder in symbols["rules"][1:]:
+            minus = next(item for item in decoder["manipulators"]
+                         if item["from"]["key_code"] == "non_us_backslash")
+            self.assertEqual(minus["to"][0]["key_code"], "hyphen")
+            conditions = {condition["type"]: condition for condition in minus["conditions"]}
+            self.assertEqual(conditions["expression_if"]["expression"],
+                             "adv360_sym_left + adv360_sym_right > 0")
+            self.assertEqual(conditions["device_if"]["identifiers"], [
+                {**device, "is_keyboard": True} for device in MANIFEST["devices"]
+            ])
+            self.assertIn("input_source_if", conditions)
+
     def test_device_gate_distinguishes_verified_bluetooth_and_usb(self) -> None:
         output = """
 0x1d50 0x615e 0x401b4aef 1 6 0x100 Bluetooth Low Energy Driver Adv360 Pro
@@ -216,6 +248,16 @@ ctrl-alt-shift-i = ['join-with right', 'mode main']
             home = Path(directory)
             paths = HostPaths.for_home(home, ROOT)
             paths.karabiner_config.parent.mkdir(parents=True)
+            usb_keyboard = {"vendor_id": 10730, "product_id": 866, "is_keyboard": True}
+            ble_keyboard = {"vendor_id": 7504, "product_id": 24926, "is_keyboard": True}
+            usb_composite = {**usb_keyboard, "is_pointing_device": True}
+            ble_composite = {**ble_keyboard, "is_pointing_device": True}
+            ble_legacy_mods = [{
+                "from": {"key_code": "left_control"}, "to": [{"key_code": "left_command"}],
+            }]
+            usb_existing_mods = [{
+                "from": {"key_code": "escape"}, "to": [{"key_code": "tab"}],
+            }]
             original_karabiner = {
                 "profiles": [{
                     "name": "Default",
@@ -230,6 +272,17 @@ ctrl-alt-shift-i = ['join-with right', 'mode main']
                             "from": {"key_code": "c"},
                             "to": [{"key_code": "d"}],
                         }],
+                    }, {
+                        "identifiers": ble_keyboard,
+                        "simple_modifications": ble_legacy_mods,
+                    }, {
+                        "identifiers": usb_composite,
+                        "ignore": True,
+                        "simple_modifications": usb_existing_mods,
+                        "manipulate_caps_lock_led": True,
+                    }, {
+                        "identifiers": {**ble_composite, "is_consumer": True},
+                        "ignore": True,
                     }],
                     "complex_modifications": {
                         "rules": [{
@@ -237,7 +290,7 @@ ctrl-alt-shift-i = ['join-with right', 'mode main']
                             "manipulators": [],
                         }]
                     },
-                }]
+                }, {"name": "Other", "devices": [{"identifiers": ble_composite, "ignore": True}]}]
             }
             paths.karabiner_config.write_text(
                 json.dumps(original_karabiner, indent=2) + "\n"
@@ -265,10 +318,14 @@ ctrl-alt-shift-i = ['join-with right', 'mode main']
                 profile["simple_modifications"],
                 original_karabiner["profiles"][0]["simple_modifications"],
             )
-            self.assertEqual(
-                profile["devices"],
-                original_karabiner["profiles"][0]["devices"],
-            )
+            original_devices = original_karabiner["profiles"][0]["devices"]
+            self.assertEqual(profile["devices"], [
+                *original_devices[:2],
+                {**original_devices[2], "ignore": False},
+                original_devices[3],
+                {"identifiers": ble_composite, "ignore": False, "simple_modifications": ble_legacy_mods},
+            ])
+            self.assertEqual(installed["profiles"][1], original_karabiner["profiles"][1])
             descriptions = [
                 rule["description"]
                 for rule in profile["complex_modifications"]["rules"]
@@ -288,6 +345,9 @@ ctrl-alt-shift-i = ['join-with right', 'mode main']
             self.assertTrue(paths.installed_bundle.is_dir())
             self.assertEqual(paths.mode_file.read_text().strip(), "primary")
 
+            # Customizations on an exact composite entry take priority over legacy values.
+            profile["devices"][-1]["simple_modifications"] = []
+            paths.karabiner_config.write_text(json.dumps(installed))
             second_backup = install(
                 paths,
                 connected,
@@ -295,6 +355,7 @@ ctrl-alt-shift-i = ['join-with right', 'mode main']
             )
             self.assertNotEqual(first_backup, second_backup)
             reinstalled = json.loads(paths.karabiner_config.read_text())
+            self.assertEqual(reinstalled["profiles"][0]["devices"], profile["devices"])
             descriptions = [
                 rule["description"]
                 for rule in reinstalled["profiles"][0][
@@ -328,11 +389,40 @@ ctrl-alt-shift-i = ['join-with right', 'mode main']
             install(paths, connected, compile_helpers=False)
 
             self.assertFalse(paths.aerospace_config.exists())
-            rules = json.loads(paths.karabiner_config.read_text())["profiles"][0][
-                "complex_modifications"
-            ]["rules"]
+            profile = json.loads(paths.karabiner_config.read_text())["profiles"][0]
+            self.assertEqual(profile["devices"], [
+                {"identifiers": {"vendor_id": vendor, "product_id": product,
+                                 "is_keyboard": True, "is_pointing_device": True}, "ignore": False}
+                for vendor, product in ((10730, 866), (7504, 24926))
+            ])
+            rules = profile["complex_modifications"]["rules"]
             aero = next(rule for rule in rules if "physical QWERTY" in rule["description"])
             self.assertEqual([item["from"]["key_code"] for item in aero["manipulators"]], ["f24"])
+
+    def test_verify_flags_missing_or_ignored_composite_devices(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            paths = HostPaths.for_home(Path(directory), ROOT)
+            paths.karabiner_config.parent.mkdir(parents=True)
+            connected = {(10730, 866), (7504, 24926)}
+
+            def device_status():
+                return [
+                    problem for problem in verify(paths, connected)
+                    if problem.startswith("Karabiner is not modifying events for ")
+                ]
+            paths.karabiner_config.write_text(json.dumps({"profiles": [{"selected": True, "devices": [
+                {"identifiers": {"vendor_id": 10730, "product_id": 866,
+                                 "is_keyboard": True, "is_pointing_device": True}, "ignore": True},
+                {"identifiers": {"vendor_id": 7504, "product_id": 24926, "is_keyboard": True}, "ignore": False},
+            ]}]}))
+            self.assertEqual(device_status(), [
+                "Karabiner is not modifying events for Adv360 Pro USB",
+                "Karabiner is not modifying events for Adv360 Pro Bluetooth",
+            ])
+
+            install(paths, connected, compile_helpers=False)
+
+            self.assertEqual(device_status(), [])
 
     def test_install_refuses_unverified_transport(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
