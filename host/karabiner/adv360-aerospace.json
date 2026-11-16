@@ -1,0 +1,1764 @@
+{
+  "title": "Adv360 Managed AeroSpace",
+  "rules": [
+    {
+      "description": "[Adv360 Managed] Normalize physical QWERTY for AeroSpace",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "f24",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "adv360_meh_qwerty",
+                "value": 1,
+                "key_up_value": 0
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            }
+          ],
+          "description": "[Adv360 Managed] Track physical QWERTY Meh (F24)"
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "t",
+            "modifiers": {
+              "mandatory": [
+                "command",
+                "control",
+                "option",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "b",
+              "modifiers": [
+                "left_command",
+                "left_control",
+                "left_option",
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "variable_if",
+              "name": "adv360_meh_qwerty",
+              "value": 1
+            }
+          ],
+          "description": "[Adv360 Managed] AeroSpace command+control+option+shift: t to b"
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "v",
+            "modifiers": {
+              "mandatory": [
+                "command",
+                "control",
+                "option",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "d",
+              "modifiers": [
+                "left_command",
+                "left_control",
+                "left_option",
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "variable_if",
+              "name": "adv360_meh_qwerty",
+              "value": 1
+            }
+          ],
+          "description": "[Adv360 Managed] AeroSpace command+control+option+shift: v to d"
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "k",
+            "modifiers": {
+              "mandatory": [
+                "command",
+                "control",
+                "option",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "e",
+              "modifiers": [
+                "left_command",
+                "left_control",
+                "left_option",
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "variable_if",
+              "name": "adv360_meh_qwerty",
+              "value": 1
+            }
+          ],
+          "description": "[Adv360 Managed] AeroSpace command+control+option+shift: k to e"
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "e",
+            "modifiers": {
+              "mandatory": [
+                "command",
+                "control",
+                "option",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "f",
+              "modifiers": [
+                "left_command",
+                "left_control",
+                "left_option",
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "variable_if",
+              "name": "adv360_meh_qwerty",
+              "value": 1
+            }
+          ],
+          "description": "[Adv360 Managed] AeroSpace command+control+option+shift: e to f"
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "l",
+            "modifiers": {
+              "mandatory": [
+                "command",
+                "control",
+                "option",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "i",
+              "modifiers": [
+                "left_command",
+                "left_control",
+                "left_option",
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "variable_if",
+              "name": "adv360_meh_qwerty",
+              "value": 1
+            }
+          ],
+          "description": "[Adv360 Managed] AeroSpace command+control+option+shift: l to i"
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "y",
+            "modifiers": {
+              "mandatory": [
+                "command",
+                "control",
+                "option",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "j",
+              "modifiers": [
+                "left_command",
+                "left_control",
+                "left_option",
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "variable_if",
+              "name": "adv360_meh_qwerty",
+              "value": 1
+            }
+          ],
+          "description": "[Adv360 Managed] AeroSpace command+control+option+shift: y to j"
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "n",
+            "modifiers": {
+              "mandatory": [
+                "command",
+                "control",
+                "option",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "k",
+              "modifiers": [
+                "left_command",
+                "left_control",
+                "left_option",
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "variable_if",
+              "name": "adv360_meh_qwerty",
+              "value": 1
+            }
+          ],
+          "description": "[Adv360 Managed] AeroSpace command+control+option+shift: n to k"
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "u",
+            "modifiers": {
+              "mandatory": [
+                "command",
+                "control",
+                "option",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "l",
+              "modifiers": [
+                "left_command",
+                "left_control",
+                "left_option",
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "variable_if",
+              "name": "adv360_meh_qwerty",
+              "value": 1
+            }
+          ],
+          "description": "[Adv360 Managed] AeroSpace command+control+option+shift: u to l"
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "h",
+            "modifiers": {
+              "mandatory": [
+                "command",
+                "control",
+                "option",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "m",
+              "modifiers": [
+                "left_command",
+                "left_control",
+                "left_option",
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "variable_if",
+              "name": "adv360_meh_qwerty",
+              "value": 1
+            }
+          ],
+          "description": "[Adv360 Managed] AeroSpace command+control+option+shift: h to m"
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "j",
+            "modifiers": {
+              "mandatory": [
+                "command",
+                "control",
+                "option",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "n",
+              "modifiers": [
+                "left_command",
+                "left_control",
+                "left_option",
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "variable_if",
+              "name": "adv360_meh_qwerty",
+              "value": 1
+            }
+          ],
+          "description": "[Adv360 Managed] AeroSpace command+control+option+shift: j to n"
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "r",
+            "modifiers": {
+              "mandatory": [
+                "command",
+                "control",
+                "option",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "p",
+              "modifiers": [
+                "left_command",
+                "left_control",
+                "left_option",
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "variable_if",
+              "name": "adv360_meh_qwerty",
+              "value": 1
+            }
+          ],
+          "description": "[Adv360 Managed] AeroSpace command+control+option+shift: r to p"
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "s",
+            "modifiers": {
+              "mandatory": [
+                "command",
+                "control",
+                "option",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "r",
+              "modifiers": [
+                "left_command",
+                "left_control",
+                "left_option",
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "variable_if",
+              "name": "adv360_meh_qwerty",
+              "value": 1
+            }
+          ],
+          "description": "[Adv360 Managed] AeroSpace command+control+option+shift: s to r"
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "d",
+            "modifiers": {
+              "mandatory": [
+                "command",
+                "control",
+                "option",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "s",
+              "modifiers": [
+                "left_command",
+                "left_control",
+                "left_option",
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "variable_if",
+              "name": "adv360_meh_qwerty",
+              "value": 1
+            }
+          ],
+          "description": "[Adv360 Managed] AeroSpace command+control+option+shift: d to s"
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "f",
+            "modifiers": {
+              "mandatory": [
+                "command",
+                "control",
+                "option",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "t",
+              "modifiers": [
+                "left_command",
+                "left_control",
+                "left_option",
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "variable_if",
+              "name": "adv360_meh_qwerty",
+              "value": 1
+            }
+          ],
+          "description": "[Adv360 Managed] AeroSpace command+control+option+shift: f to t"
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "i",
+            "modifiers": {
+              "mandatory": [
+                "command",
+                "control",
+                "option",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "u",
+              "modifiers": [
+                "left_command",
+                "left_control",
+                "left_option",
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "variable_if",
+              "name": "adv360_meh_qwerty",
+              "value": 1
+            }
+          ],
+          "description": "[Adv360 Managed] AeroSpace command+control+option+shift: i to u"
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "b",
+            "modifiers": {
+              "mandatory": [
+                "command",
+                "control",
+                "option",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "v",
+              "modifiers": [
+                "left_command",
+                "left_control",
+                "left_option",
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "variable_if",
+              "name": "adv360_meh_qwerty",
+              "value": 1
+            }
+          ],
+          "description": "[Adv360 Managed] AeroSpace command+control+option+shift: b to v"
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "o",
+            "modifiers": {
+              "mandatory": [
+                "command",
+                "control",
+                "option",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "y",
+              "modifiers": [
+                "left_command",
+                "left_control",
+                "left_option",
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "variable_if",
+              "name": "adv360_meh_qwerty",
+              "value": 1
+            }
+          ],
+          "description": "[Adv360 Managed] AeroSpace command+control+option+shift: o to y"
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "t",
+            "modifiers": {
+              "mandatory": [
+                "control",
+                "option",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "b",
+              "modifiers": [
+                "left_control",
+                "left_option",
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "variable_if",
+              "name": "adv360_meh_qwerty",
+              "value": 1
+            }
+          ],
+          "description": "[Adv360 Managed] AeroSpace control+option+shift: t to b"
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "v",
+            "modifiers": {
+              "mandatory": [
+                "control",
+                "option",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "d",
+              "modifiers": [
+                "left_control",
+                "left_option",
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "variable_if",
+              "name": "adv360_meh_qwerty",
+              "value": 1
+            }
+          ],
+          "description": "[Adv360 Managed] AeroSpace control+option+shift: v to d"
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "k",
+            "modifiers": {
+              "mandatory": [
+                "control",
+                "option",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "e",
+              "modifiers": [
+                "left_control",
+                "left_option",
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "variable_if",
+              "name": "adv360_meh_qwerty",
+              "value": 1
+            }
+          ],
+          "description": "[Adv360 Managed] AeroSpace control+option+shift: k to e"
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "e",
+            "modifiers": {
+              "mandatory": [
+                "control",
+                "option",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "f",
+              "modifiers": [
+                "left_control",
+                "left_option",
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "variable_if",
+              "name": "adv360_meh_qwerty",
+              "value": 1
+            }
+          ],
+          "description": "[Adv360 Managed] AeroSpace control+option+shift: e to f"
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "l",
+            "modifiers": {
+              "mandatory": [
+                "control",
+                "option",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "i",
+              "modifiers": [
+                "left_control",
+                "left_option",
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "variable_if",
+              "name": "adv360_meh_qwerty",
+              "value": 1
+            }
+          ],
+          "description": "[Adv360 Managed] AeroSpace control+option+shift: l to i"
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "y",
+            "modifiers": {
+              "mandatory": [
+                "control",
+                "option",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "j",
+              "modifiers": [
+                "left_control",
+                "left_option",
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "variable_if",
+              "name": "adv360_meh_qwerty",
+              "value": 1
+            }
+          ],
+          "description": "[Adv360 Managed] AeroSpace control+option+shift: y to j"
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "n",
+            "modifiers": {
+              "mandatory": [
+                "control",
+                "option",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "k",
+              "modifiers": [
+                "left_control",
+                "left_option",
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "variable_if",
+              "name": "adv360_meh_qwerty",
+              "value": 1
+            }
+          ],
+          "description": "[Adv360 Managed] AeroSpace control+option+shift: n to k"
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "u",
+            "modifiers": {
+              "mandatory": [
+                "control",
+                "option",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "l",
+              "modifiers": [
+                "left_control",
+                "left_option",
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "variable_if",
+              "name": "adv360_meh_qwerty",
+              "value": 1
+            }
+          ],
+          "description": "[Adv360 Managed] AeroSpace control+option+shift: u to l"
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "h",
+            "modifiers": {
+              "mandatory": [
+                "control",
+                "option",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "m",
+              "modifiers": [
+                "left_control",
+                "left_option",
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "variable_if",
+              "name": "adv360_meh_qwerty",
+              "value": 1
+            }
+          ],
+          "description": "[Adv360 Managed] AeroSpace control+option+shift: h to m"
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "j",
+            "modifiers": {
+              "mandatory": [
+                "control",
+                "option",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "n",
+              "modifiers": [
+                "left_control",
+                "left_option",
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "variable_if",
+              "name": "adv360_meh_qwerty",
+              "value": 1
+            }
+          ],
+          "description": "[Adv360 Managed] AeroSpace control+option+shift: j to n"
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "r",
+            "modifiers": {
+              "mandatory": [
+                "control",
+                "option",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "p",
+              "modifiers": [
+                "left_control",
+                "left_option",
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "variable_if",
+              "name": "adv360_meh_qwerty",
+              "value": 1
+            }
+          ],
+          "description": "[Adv360 Managed] AeroSpace control+option+shift: r to p"
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "s",
+            "modifiers": {
+              "mandatory": [
+                "control",
+                "option",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "r",
+              "modifiers": [
+                "left_control",
+                "left_option",
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "variable_if",
+              "name": "adv360_meh_qwerty",
+              "value": 1
+            }
+          ],
+          "description": "[Adv360 Managed] AeroSpace control+option+shift: s to r"
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "d",
+            "modifiers": {
+              "mandatory": [
+                "control",
+                "option",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "s",
+              "modifiers": [
+                "left_control",
+                "left_option",
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "variable_if",
+              "name": "adv360_meh_qwerty",
+              "value": 1
+            }
+          ],
+          "description": "[Adv360 Managed] AeroSpace control+option+shift: d to s"
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "p",
+            "modifiers": {
+              "mandatory": [
+                "control",
+                "option",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "semicolon",
+              "modifiers": [
+                "left_control",
+                "left_option",
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "variable_if",
+              "name": "adv360_meh_qwerty",
+              "value": 1
+            }
+          ],
+          "description": "[Adv360 Managed] AeroSpace control+option+shift: p to semicolon"
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "f",
+            "modifiers": {
+              "mandatory": [
+                "control",
+                "option",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "t",
+              "modifiers": [
+                "left_control",
+                "left_option",
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "variable_if",
+              "name": "adv360_meh_qwerty",
+              "value": 1
+            }
+          ],
+          "description": "[Adv360 Managed] AeroSpace control+option+shift: f to t"
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "i",
+            "modifiers": {
+              "mandatory": [
+                "control",
+                "option",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "u",
+              "modifiers": [
+                "left_control",
+                "left_option",
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "variable_if",
+              "name": "adv360_meh_qwerty",
+              "value": 1
+            }
+          ],
+          "description": "[Adv360 Managed] AeroSpace control+option+shift: i to u"
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "b",
+            "modifiers": {
+              "mandatory": [
+                "control",
+                "option",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "v",
+              "modifiers": [
+                "left_control",
+                "left_option",
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "variable_if",
+              "name": "adv360_meh_qwerty",
+              "value": 1
+            }
+          ],
+          "description": "[Adv360 Managed] AeroSpace control+option+shift: b to v"
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "o",
+            "modifiers": {
+              "mandatory": [
+                "control",
+                "option",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "y",
+              "modifiers": [
+                "left_control",
+                "left_option",
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "variable_if",
+              "name": "adv360_meh_qwerty",
+              "value": 1
+            }
+          ],
+          "description": "[Adv360 Managed] AeroSpace control+option+shift: o to y"
+        }
+      ]
+    }
+  ]
+}

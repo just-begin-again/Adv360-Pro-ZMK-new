@@ -1,5 +1,10 @@
 # Advantage 360 Pro ZMK upgrade guide
 
+> Project-specific note: this file documents the historical upstream V2 to V3
+> migration. The current unified configuration uses only
+> `config/adv360.keymap`; `config/keymap.json` has intentionally been removed.
+> Do not follow the `keymap.json` steps below for this branch.
+
 The last V2.0 update and the new V3.0 branch have introduced changes into the keymap files that causes merge conflicts for people updating with custom keymaps. This guide covers what changed, why it changed and how to fix it.
 
 ## What changed and why
@@ -59,4 +64,4 @@ This assumes you already have [GitHub desktop](https://desktop.github.com/) down
     Once the merge is complete you should be able to click the "push origin" button in the top bar. At this point your changes should be uploaded to GitHub servers and the build should start
 9. Test your firmware
 
-    When the build succeeds download the uf2 files and flash them as normal. Test the keymap, if keys are shifted one way or the other it's likely you deleted too many or not enough behaviours. 
+    When the build succeeds download the uf2 files and flash them as normal. Test the keymap, if keys are shifted one way or the other it's likely you deleted too many or not enough behaviours.

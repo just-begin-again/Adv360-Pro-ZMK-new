@@ -1,0 +1,360 @@
+{
+  "title": "Adv360 Managed Input Sources",
+  "rules": [
+    {
+      "description": "[Adv360 Managed] Toggle input source (F19)",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "f19"
+          },
+          "to": [
+            {
+              "select_input_source": {
+                "input_source_id": "com.apple.keylayout.RussianWin"
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "input_source_if",
+              "input_sources": [
+                {
+                  "input_source_id": "^com\\.apple\\.keylayout\\.ABC$"
+                }
+              ]
+            }
+          ],
+          "description": "Primary: EN to RU"
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "f19"
+          },
+          "to": [
+            {
+              "select_input_source": {
+                "input_source_id": "com.apple.keylayout.ABC"
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "input_source_if",
+              "input_sources": [
+                {
+                  "input_source_id": "^com\\.apple\\.keylayout\\.RussianWin$"
+                }
+              ]
+            }
+          ],
+          "description": "Primary: RU to EN"
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "f19"
+          },
+          "to": [
+            {
+              "select_input_source": {
+                "input_source_id": "com.rsushkevich.keylayout.Adv360RussianPC"
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "input_source_if",
+              "input_sources": [
+                {
+                  "input_source_id": "^com\\.rsushkevich\\.keylayout\\.Adv360ABC$"
+                }
+              ]
+            }
+          ],
+          "description": "Fallback: EN to RU"
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "f19"
+          },
+          "to": [
+            {
+              "select_input_source": {
+                "input_source_id": "com.rsushkevich.keylayout.Adv360ABC"
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "input_source_if",
+              "input_sources": [
+                {
+                  "input_source_id": "^com\\.rsushkevich\\.keylayout\\.Adv360RussianPC$"
+                }
+              ]
+            }
+          ],
+          "description": "Fallback: RU to EN"
+        }
+      ]
+    },
+    {
+      "description": "[Adv360 Managed] Recover EN input source (F20)",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "f20"
+          },
+          "to": [
+            {
+              "select_input_source": {
+                "input_source_id": "com.apple.keylayout.ABC"
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "input_source_if",
+              "input_sources": [
+                {
+                  "input_source_id": "^com\\.apple\\.keylayout\\.ABC$"
+                },
+                {
+                  "input_source_id": "^com\\.apple\\.keylayout\\.RussianWin$"
+                }
+              ]
+            }
+          ],
+          "description": "Primary: recover EN"
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "f20"
+          },
+          "to": [
+            {
+              "select_input_source": {
+                "input_source_id": "com.rsushkevich.keylayout.Adv360ABC"
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "input_source_if",
+              "input_sources": [
+                {
+                  "input_source_id": "^com\\.rsushkevich\\.keylayout\\.Adv360ABC$"
+                },
+                {
+                  "input_source_id": "^com\\.rsushkevich\\.keylayout\\.Adv360RussianPC$"
+                }
+              ]
+            }
+          ],
+          "description": "Fallback: recover EN"
+        }
+      ]
+    },
+    {
+      "description": "[Adv360 Managed] Recover RU input source (F21)",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "f21"
+          },
+          "to": [
+            {
+              "select_input_source": {
+                "input_source_id": "com.apple.keylayout.RussianWin"
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "input_source_if",
+              "input_sources": [
+                {
+                  "input_source_id": "^com\\.apple\\.keylayout\\.ABC$"
+                },
+                {
+                  "input_source_id": "^com\\.apple\\.keylayout\\.RussianWin$"
+                }
+              ]
+            }
+          ],
+          "description": "Primary: recover RU"
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "f21"
+          },
+          "to": [
+            {
+              "select_input_source": {
+                "input_source_id": "com.rsushkevich.keylayout.Adv360RussianPC"
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "description": "Adv360 Pro USB",
+                  "vendor_id": 10730,
+                  "product_id": 866,
+                  "is_keyboard": true
+                },
+                {
+                  "description": "Adv360 Pro Bluetooth",
+                  "vendor_id": 7504,
+                  "product_id": 24926,
+                  "is_keyboard": true
+                }
+              ]
+            },
+            {
+              "type": "input_source_if",
+              "input_sources": [
+                {
+                  "input_source_id": "^com\\.rsushkevich\\.keylayout\\.Adv360ABC$"
+                },
+                {
+                  "input_source_id": "^com\\.rsushkevich\\.keylayout\\.Adv360RussianPC$"
+                }
+              ]
+            }
+          ],
+          "description": "Fallback: recover RU"
+        }
+      ]
+    }
+  ]
+}

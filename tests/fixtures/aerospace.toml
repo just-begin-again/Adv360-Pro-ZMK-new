@@ -1,0 +1,9 @@
+[mode.main.binding]
+ctrl-shift-alt-n = 'focus left'
+ctrl-shift-alt-e = 'focus down'
+ctrl-shift-alt-u = 'focus up'
+ctrl-shift-alt-i = 'focus right'
+ctrl-shift-alt-cmd-n = 'move left'
+
+[mode.service.binding]
+ctrl-alt-shift-l = ['join-with right', 'mode main']

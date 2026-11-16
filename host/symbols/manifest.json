@@ -1,0 +1,274 @@
+{
+  "version": 1,
+  "reserved_key_codes": ["f19", "f20", "f21"],
+  "devices": [
+    {"description": "Adv360 Pro USB", "vendor_id": 10730, "product_id": 866},
+    {"description": "Adv360 Pro Bluetooth", "vendor_id": 7504, "product_id": 24926}
+  ],
+  "symbols": [
+    {
+      "name": "tilde", "unicode": "~",
+      "token": {"zmk": "F13", "key_code": "f13", "mac_key_code": 105},
+      "outputs": {
+        "abc": {"type": "key", "key_code": "grave_accent_and_tilde", "modifiers": ["left_shift"]},
+        "russian_win": {"type": "unicode_text", "text": "~"}
+      }
+    },
+    {
+      "name": "dollar", "unicode": "$",
+      "token": {"zmk": "F14", "key_code": "f14", "mac_key_code": 107},
+      "outputs": {
+        "abc": {"type": "key", "key_code": "4", "modifiers": ["left_shift"]},
+        "russian_win": {"type": "key", "key_code": "4", "modifiers": ["left_option"]}
+      }
+    },
+    {
+      "name": "percent", "unicode": "%",
+      "token": {"zmk": "F15", "key_code": "f15", "mac_key_code": 113},
+      "outputs": {
+        "abc": {"type": "key", "key_code": "5", "modifiers": ["left_shift"]},
+        "russian_win": {"type": "key", "key_code": "5", "modifiers": ["left_shift"]}
+      }
+    },
+    {
+      "name": "caret", "unicode": "^",
+      "token": {"zmk": "F16", "key_code": "f16", "mac_key_code": 106},
+      "outputs": {
+        "abc": {"type": "key", "key_code": "6", "modifiers": ["left_shift"]},
+        "russian_win": {"type": "key", "key_code": "6", "modifiers": ["left_option"]}
+      }
+    },
+    {
+      "name": "backslash", "unicode": "\\",
+      "token": {"zmk": "F17", "key_code": "f17", "mac_key_code": 64},
+      "outputs": {
+        "abc": {"type": "key", "key_code": "backslash"},
+        "russian_win": {"type": "key", "key_code": "backslash"}
+      }
+    },
+    {
+      "name": "left_brace", "unicode": "{",
+      "token": {"zmk": "F18", "key_code": "f18", "mac_key_code": 79},
+      "outputs": {
+        "abc": {"type": "key", "key_code": "open_bracket", "modifiers": ["left_shift"]},
+        "russian_win": {"type": "key", "key_code": "9", "modifiers": ["left_shift", "left_option"]}
+      }
+    },
+    {
+      "name": "less_than", "unicode": "<",
+      "token": {"zmk": "KP_N0", "key_code": "keypad_0", "mac_key_code": 82},
+      "outputs": {
+        "abc": {"type": "key", "key_code": "comma", "modifiers": ["left_shift"]},
+        "russian_win": {"type": "key", "key_code": "comma", "modifiers": ["left_shift", "left_option"]}
+      }
+    },
+    {
+      "name": "greater_than", "unicode": ">",
+      "token": {"zmk": "KP_N1", "key_code": "keypad_1", "mac_key_code": 83},
+      "outputs": {
+        "abc": {"type": "key", "key_code": "period", "modifiers": ["left_shift"]},
+        "russian_win": {"type": "key", "key_code": "period", "modifiers": ["left_shift", "left_option"]}
+      }
+    },
+    {
+      "name": "right_brace", "unicode": "}",
+      "token": {"zmk": "KP_N2", "key_code": "keypad_2", "mac_key_code": 84},
+      "outputs": {
+        "abc": {"type": "key", "key_code": "close_bracket", "modifiers": ["left_shift"]},
+        "russian_win": {"type": "key", "key_code": "0", "modifiers": ["left_shift", "left_option"]}
+      }
+    },
+    {
+      "name": "left_parenthesis", "unicode": "(",
+      "token": {"zmk": "KP_N3", "key_code": "keypad_3", "mac_key_code": 85},
+      "outputs": {
+        "abc": {"type": "key", "key_code": "9", "modifiers": ["left_shift"]},
+        "russian_win": {"type": "key", "key_code": "9", "modifiers": ["left_shift"]}
+      }
+    },
+    {
+      "name": "left_bracket", "unicode": "[",
+      "token": {"zmk": "KP_N4", "key_code": "keypad_4", "mac_key_code": 86},
+      "outputs": {
+        "abc": {"type": "key", "key_code": "open_bracket"},
+        "russian_win": {"type": "key", "key_code": "grave_accent_and_tilde", "modifiers": ["left_option"]}
+      }
+    },
+    {
+      "name": "right_bracket", "unicode": "]",
+      "token": {"zmk": "KP_N5", "key_code": "keypad_5", "mac_key_code": 87},
+      "outputs": {
+        "abc": {"type": "key", "key_code": "close_bracket"},
+        "russian_win": {"type": "key", "key_code": "grave_accent_and_tilde", "modifiers": ["left_shift", "left_option"]}
+      }
+    },
+    {
+      "name": "right_parenthesis", "unicode": ")",
+      "token": {"zmk": "KP_N6", "key_code": "keypad_6", "mac_key_code": 88},
+      "outputs": {
+        "abc": {"type": "key", "key_code": "0", "modifiers": ["left_shift"]},
+        "russian_win": {"type": "key", "key_code": "0", "modifiers": ["left_shift"]}
+      }
+    },
+    {
+      "name": "pipe", "unicode": "|",
+      "token": {"zmk": "KP_N7", "key_code": "keypad_7", "mac_key_code": 89},
+      "outputs": {
+        "abc": {"type": "key", "key_code": "backslash", "modifiers": ["left_shift"]},
+        "russian_win": {"type": "key", "key_code": "backslash", "modifiers": ["left_shift", "left_option"]}
+      }
+    },
+    {
+      "name": "equal", "unicode": "=",
+      "token": {"zmk": "KP_N8", "key_code": "keypad_8", "mac_key_code": 91},
+      "outputs": {
+        "abc": {"type": "key", "key_code": "equal_sign"},
+        "russian_win": {"type": "key", "key_code": "equal_sign"}
+      }
+    },
+    {
+      "name": "asterisk", "unicode": "*",
+      "token": {"zmk": "KP_N9", "key_code": "keypad_9", "mac_key_code": 92},
+      "outputs": {
+        "abc": {"type": "key", "key_code": "8", "modifiers": ["left_shift"]},
+        "russian_win": {"type": "key", "key_code": "8", "modifiers": ["left_shift"]}
+      }
+    },
+    {
+      "name": "plus", "unicode": "+",
+      "token": {"zmk": "KP_DOT", "key_code": "keypad_period", "mac_key_code": 65},
+      "outputs": {
+        "abc": {"type": "key", "key_code": "equal_sign", "modifiers": ["left_shift"]},
+        "russian_win": {"type": "key", "key_code": "equal_sign", "modifiers": ["left_shift"]}
+      }
+    },
+    {
+      "name": "at", "unicode": "@",
+      "token": {"zmk": "KP_DIVIDE", "key_code": "keypad_slash", "mac_key_code": 75},
+      "outputs": {
+        "abc": {"type": "key", "key_code": "2", "modifiers": ["left_shift"]},
+        "russian_win": {"type": "key", "key_code": "2", "modifiers": ["left_option"]}
+      }
+    },
+    {
+      "name": "ampersand", "unicode": "&",
+      "token": {"zmk": "KP_MULTIPLY", "key_code": "keypad_asterisk", "mac_key_code": 67},
+      "outputs": {
+        "abc": {"type": "key", "key_code": "7", "modifiers": ["left_shift"]},
+        "russian_win": {"type": "key", "key_code": "7", "modifiers": ["left_option"]}
+      }
+    },
+    {
+      "name": "grave", "unicode": "`",
+      "token": {"zmk": "KP_MINUS", "key_code": "keypad_hyphen", "mac_key_code": 78},
+      "outputs": {
+        "abc": {"type": "key", "key_code": "grave_accent_and_tilde"},
+        "russian_win": {"type": "unicode_text", "text": "`"}
+      }
+    },
+    {
+      "name": "colon", "unicode": ":",
+      "token": {"zmk": "KP_PLUS", "key_code": "keypad_plus", "mac_key_code": 69},
+      "outputs": {
+        "abc": {"type": "key", "key_code": "semicolon", "modifiers": ["left_shift"]},
+        "russian_win": {"type": "key", "key_code": "6", "modifiers": ["left_shift"]}
+      }
+    },
+    {
+      "name": "semicolon", "unicode": ";",
+      "token": {"zmk": "KP_ENTER", "key_code": "keypad_enter", "mac_key_code": 76},
+      "outputs": {
+        "abc": {"type": "key", "key_code": "semicolon"},
+        "russian_win": {"type": "key", "key_code": "4", "modifiers": ["left_shift"]}
+      }
+    },
+    {
+      "name": "comma", "unicode": ",",
+      "token": {"zmk": "KP_EQUAL", "key_code": "keypad_equal_sign", "mac_key_code": 81},
+      "outputs": {
+        "abc": {"type": "key", "key_code": "comma"},
+        "russian_win": {"type": "key", "key_code": "slash", "modifiers": ["left_shift"]}
+      }
+    },
+    {
+      "name": "period", "unicode": ".",
+      "token": {"zmk": "KP_COMMA", "key_code": "keypad_comma", "mac_key_code": 95},
+      "outputs": {
+        "abc": {"type": "key", "key_code": "period"},
+        "russian_win": {"type": "key", "key_code": "slash"}
+      }
+    },
+    {
+      "name": "em_dash", "unicode": "—",
+      "token": {"zmk": "KP_NUM", "key_code": "keypad_num_lock", "mac_key_code": 71},
+      "outputs": {
+        "abc": {"type": "key", "key_code": "hyphen", "modifiers": ["left_shift", "left_option"]},
+        "russian_win": {"type": "key", "key_code": "hyphen", "modifiers": ["left_shift", "left_option"]}
+      }
+    },
+    {
+      "name": "minus", "unicode": "-",
+      "token": {"zmk": "NON_US_BSLH", "key_code": "non_us_backslash", "mac_key_code": 10},
+      "outputs": {
+        "abc": {"type": "key", "key_code": "hyphen"},
+        "russian_win": {"type": "key", "key_code": "hyphen"}
+      }
+    },
+    {
+      "name": "question", "unicode": "?",
+      "token": {"zmk": "K_APP", "key_code": "application", "mac_key_code": 110},
+      "outputs": {
+        "abc": {"type": "key", "key_code": "slash", "modifiers": ["left_shift"]},
+        "russian_win": {"type": "key", "key_code": "7", "modifiers": ["left_shift"]}
+      }
+    },
+    {
+      "name": "exclamation", "unicode": "!",
+      "token": {"zmk": "K_HELP", "key_code": "help", "mac_key_code": 114},
+      "outputs": {
+        "abc": {"type": "key", "key_code": "1", "modifiers": ["left_shift"]},
+        "russian_win": {"type": "key", "key_code": "1", "modifiers": ["left_shift"]}
+      }
+    },
+    {
+      "name": "double_quote", "unicode": "\"",
+      "token": {"zmk": "INTERNATIONAL_1", "key_code": "international1", "mac_key_code": 94},
+      "outputs": {
+        "abc": {"type": "key", "key_code": "quote", "modifiers": ["left_shift"]},
+        "russian_win": {"type": "key", "key_code": "2", "modifiers": ["left_shift"]}
+      }
+    },
+    {
+      "name": "single_quote", "unicode": "'",
+      "token": {"zmk": "INTERNATIONAL_3", "key_code": "international3", "mac_key_code": 93},
+      "outputs": {
+        "abc": {"type": "key", "key_code": "quote"},
+        "russian_win": {"type": "key", "key_code": "o", "modifiers": ["left_option"]}
+      }
+    },
+    {
+      "name": "slash", "unicode": "/",
+      "token": {"zmk": "LS(F13)", "key_code": "f13", "mac_key_code": 105, "modifiers": ["left_shift"]},
+      "outputs": {
+        "abc": {"type": "key", "key_code": "slash"},
+        "russian_win": {"type": "key", "key_code": "backslash", "modifiers": ["left_shift"]}
+      }
+    },
+    {
+      "name": "hash", "unicode": "#",
+      "token": {"zmk": "LS(F14)", "key_code": "f14", "mac_key_code": 107, "modifiers": ["left_shift"]},
+      "outputs": {
+        "abc": {"type": "key", "key_code": "3", "modifiers": ["left_shift"]},
+        "russian_win": {"type": "key", "key_code": "3", "modifiers": ["left_option"]}
+      }
+    },
+    {
+      "name": "underscore", "unicode": "_",
+      "token": {"zmk": "LS(F15)", "key_code": "f15", "mac_key_code": 113, "modifiers": ["left_shift"]},
+      "outputs": {
+        "abc": {"type": "key", "key_code": "hyphen", "modifiers": ["left_shift"]},
+        "russian_win": {"type": "key", "key_code": "hyphen", "modifiers": ["left_shift"]}
+      }
+    }
+  ]
+}

@@ -4,7 +4,20 @@
 
 [The ZMK documentation](https://zmk.dev/docs) covers both basic and advanced functionality and has a table of OS compatibility for keycodes. Please note that the RGB Underglow, Backlight and Power Management sections are not relevant to the Advantage 360 Pro's custom ZMK fork. For more information see [this note](#note)
 
-There is a web based GUI available for editing the keymap. It is available at https://kinesiscorporation.github.io/Adv360-Pro-GUI. This repository is also compatible with certain other web based ZMK keymap editors however they may have keycodes or behaviours that are not implemented on the 360 Pro and could cause unusual behaviour or build failures. Furthermore changes made on other keymap editors may not be compatible if one goes back to using the Kinesis GUI.
+This repository's only keymap source of truth is
+[`config/adv360.keymap`](config/adv360.keymap). The obsolete
+`config/keymap.json` mirror has been removed and must not be recreated.
+
+The current keymap has been verified with the production
+[Nick Coutsos Keymap Editor](https://nickcoutsos.github.io/keymap-editor/)
+using the built-in Kinesis Advantage360 keyboard definition. The editor can
+load `config/adv360.keymap` through its File System source or through the
+Clipboard source. It correctly parses all 12 layers and the custom behaviors,
+but a successful firmware build remains authoritative.
+
+See [Unified ZMK/macOS layout](docs/unified-layout.md) for the layer map,
+symbol-token contract, host installation, primary/fallback modes, flashing,
+rollback, and hardware acceptance checks.
 
 Certain ZMK features (e.g. combos) require knowing the exact key positions in the matrix. They can be found in both image and text format [here](assets/key-positions.md)
 
@@ -102,7 +115,11 @@ Starting on 11/15/2023 the Advantage 360 Pro will now automatically record the c
 
 ## N-Key Rollover
 
-By default this keyboard has NKRO enabled, however for compatibility reasons the higher ranges are not enabled. If you want to use F13-F24 or the INTL1-9 keys with NKRO enabled you can change `CONFIG_ZMK_HID_KEYBOARD_EXTENDED_REPORT=n` to `CONFIG_ZMK_HID_KEYBOARD_EXTENDED_REPORT=y` in [adv360_left_defconfig](/config/boards/arm/adv360/adv360_left_defconfig#L65)
+This configuration enables the extended NKRO report with
+`CONFIG_ZMK_HID_KEYBOARD_EXTENDED_REPORT=y`. It is required by the dedicated
+function-key combinations, keypad, and international usages used by the
+common symbol layer.
+Disabling it breaks the ZMK/macOS symbol-token contract.
 
 ## Battery reporting
 
@@ -154,4 +171,3 @@ Further support resources can be found on Kinesis.com:
 
 In the event of a hardware issue it may be necessary to open a support ticket directly with Kinesis as opposed to a GitHub issue in this repository.
 * https://kinesis-ergo.com/support/kb360pro/#ticket
-
